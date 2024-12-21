@@ -1,14 +1,18 @@
-import { Routes } from "react-router-dom";
-import styled from "./index.module.css";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import NavbarView from "../componentes/Navbar/NavBar";
+import Dashboard from "./Produto/Index";
 
-const PainelView = () => {
+const PainelView: React.FC = () => {
     return (
-        <section className={styled.homeSection}>
-            <div className={styled.homeContainer}>
-                <Routes>
-                </Routes>
-            </div>
-        </section>)
+        <>
+            <NavbarView />
+            <Routes>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="*" element={<h1>404 - Not Found</h1>} />
+            </Routes>
+        </>
+    );
 }
 
 export default PainelView;

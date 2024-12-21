@@ -1,0 +1,78 @@
+/* Estilo geral do container principal */
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+
+/* Estilo do Drawer */
+.drawer {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.drawerPaper {
+    justify-content: space-between;
+    display: flex;
+    background-color: rgb(24, 26, 27);
+    color: white;
+    box-sizing: border-box;
+}
+
+/* Container para o logotipo */
+.logoContainer {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin-top: 5%;
+}
+
+/* Estilo da logo */
+.logo {
+    width: 80%;
+    display: flex;
+}
+
+/* Linha horizontal */
+.divider {
+    width: 90%;
+    border: none;
+    height: 1px;
+    background-color: white;
+}
+
+/* Lista de itens */
+.listItem {
+    cursor: pointer;
+}
+
+/* Ícone da lista */
+.listIcon {
+    color: white;
+}
+
+/* Footer do Drawer */
+.footerContainer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+    gap: 20px;
+    background-color: #2d3471;
+}
+
+/* Container de conteúdo */
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.1s linear;
+}
+
+/* Estilo do conteúdo interno */
+.innerContent {
+    width: 100%;
+    flex: 1;
+    display: flex;
+}
