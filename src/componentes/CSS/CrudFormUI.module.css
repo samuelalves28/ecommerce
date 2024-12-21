@@ -1,0 +1,43 @@
+.container {
+    width: 100%;
+}
+
+.header {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.backButton {
+    gap: 8px;
+    background-color: black;
+}
+
+.paper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.title {
+    padding: 15px;
+}
+
+.form {
+    padding: 15px;
+}
+
+.submitButton {
+    background-color: black;
+}
+
+.submitButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+}

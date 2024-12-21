@@ -8,7 +8,7 @@ import avatar from '../../assets/avatar.png';
 import { IoExitOutline } from "react-icons/io5";
 import { HiOutlineBars3BottomRight, HiOutlineBars3 } from "react-icons/hi2";
 import Avatar from '@mui/material/Avatar';
-import styles from '../CSS/NavBarView.module.css';
+import NavBarCss from '../CSS/NavBarView.module.css';
 
 interface MenuItem {
     key: string;
@@ -17,12 +17,16 @@ interface MenuItem {
     path: string;
 }
 
+interface NavBarViewProps {
+    children: ReactNode;
+}
+
 const items: MenuItem[] = [
-    { key: '1', icon: <MdSpaceDashboard />, label: 'Dashboard', path: '/app' },
-    { key: '2', icon: <FaBoxes />, label: 'Produtos', path: '/app/produto' },
+    { key: '1', icon: <MdSpaceDashboard />, label: 'Dashboard', path: '/painel' },
+    { key: '2', icon: <FaBoxes />, label: 'Produtos', path: '/painel/produto' },
 ];
 
-const NavBarView: React.FC = () => {
+const NavBarView: React.FC<NavBarViewProps> = ({ children }) => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const navigate = useNavigate();
 
@@ -35,7 +39,7 @@ const NavBarView: React.FC = () => {
     };
 
     return (
-        <div className={styles.container}>
+        <div className={NavBarCss.container}>
             <Drawer
                 variant="permanent"
                 open={!collapsed}
@@ -45,14 +49,14 @@ const NavBarView: React.FC = () => {
                         width: collapsed ? 60 : 240,
                     },
                 }}
-                classes={{ paper: styles.drawerPaper }}
+                classes={{ paper: NavBarCss.drawerPaper }}
             >
                 <div>
-                    <Container className={styles.logoContainer}>
+                    <Container className={NavBarCss.logoContainer}>
                         {!collapsed ? (
                             <Box
                                 component="img"
-                                className={styles.logo}
+                                className={NavBarCss.logo}
                                 alt="Logo da empresa"
                                 src={logo}
                             />
@@ -65,18 +69,18 @@ const NavBarView: React.FC = () => {
                             )}
                         </IconButton>
                     </Container>
-                    <hr className={styles.divider} />
+                    <hr className={NavBarCss.divider} />
                     <List>
                         {items.map((item) => (
-                            <ListItem key={item.key} className={styles.listItem} onClick={() => handleNavigation(item.path)}>
-                                <ListItemIcon className={styles.listIcon}>{item.icon}</ListItemIcon>
+                            <ListItem key={item.key} className={NavBarCss.listItem} onClick={() => handleNavigation(item.path)}>
+                                <ListItemIcon className={NavBarCss.listIcon}>{item.icon}</ListItemIcon>
                                 {!collapsed && <ListItemText primary={item.label} />}
                             </ListItem>
                         ))}
                     </List>
                 </div>
 
-                <Container className={styles.footerContainer}>
+                <Container className={NavBarCss.footerContainer}>
                     <Avatar alt="Remy Sharp" src={avatar} />
                     {!collapsed && (
                         <>
@@ -91,6 +95,9 @@ const NavBarView: React.FC = () => {
                     )}
                 </Container>
             </Drawer>
+            <div className={NavBarCss.content}>
+                <div className={NavBarCss.innerContent}>{children}</div>
+            </div>
         </div>
     );
 };
