@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: aquamarine;
+    color: #000000 !important;
+}
+
+.paper {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    border-radius: 8px;
+    background-color: #1c1c1c;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    margin-bottom: 24px;
+    color: #fff;
+}
+
+.textField {
+    margin-bottom: 16px;
+    background-color: #333;
+    border-radius: 4px;
+}
+
+.button {
+    margin-top: 16px;
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #e0e0e0;
+}

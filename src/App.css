@@ -1,3 +1,13 @@
+body {
+    margin: 0;
+}
+
+.loginBody {
+    margin: 0;
+    padding: 0;
+    background-color: #000 !important;
+}
+
 .container {
     display: flex;
     height: 100vh;
@@ -34,6 +44,10 @@
 
 .content {
     flex: 1;
-    padding: 16px;
-    overflow-y: auto;
+}
+
+@media (min-width: 1200px) {
+    .css-5c1adp-MuiContainer-root {
+        max-width: 100%;
+    }
 }
