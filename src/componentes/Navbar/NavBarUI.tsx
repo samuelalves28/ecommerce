@@ -22,7 +22,7 @@ interface NavBarViewProps {
 }
 
 const items: MenuItem[] = [
-    { key: '1', icon: <MdSpaceDashboard />, label: 'Dashboard', path: '/painel' },
+    { key: '1', icon: <MdSpaceDashboard />, label: 'Dashboard', path: '/painel/dashboard' },
     { key: '2', icon: <FaBoxes />, label: 'Produtos', path: '/painel/produto' },
 ];
 
