@@ -1,9 +1,12 @@
+.AppBody {
+    background: linear-gradient(135deg, #000000fa, #080e63);
+}
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: aquamarine;
     color: #000000 !important;
 }
 
@@ -14,8 +17,9 @@
     align-items: center;
     width: 400px;
     border-radius: 8px;
-    background-color: #1c1c1c;
+    background-color: #1c1c1c !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    gap: 6px;
 }
 
 .title {
@@ -29,13 +33,31 @@
     border-radius: 4px;
 }
 
+.buttonEsqueciSenha {
+    margin-top: 16px;
+    color: #f70303 !important;
+    font-size: 14px;
+    border: none !important;
+    text-decoration: none !important;
+}
+
+.buttonEsqueciSenha:hover {
+    background: #f703038f !important;
+}
+
 .button {
     margin-top: 16px;
     background-color: #fff;
-    color: #000;
     font-weight: bold;
 }
 
 .button:hover {
-    background-color: #e0e0e0;
+    background-color: #1976d296;
+}
+
+.form {
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
