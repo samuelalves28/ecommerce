@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState, useCallback } from 'react';
 import { TextField, Button, Paper, Typography, CircularProgress } from '@mui/material';
@@ -49,13 +50,16 @@ const CrudFormUI = <T extends Record<string, any>>({
     const handleSubmit = async (event: React.FormEvent): Promise<void> => {
         event.preventDefault();
         setLoading(true);
-
+        console.log('formValues', formValues)
         try {
             if (id !== 'undefined') {
-                await api.put(`${endpoint}`, { id, ...formValues });
+                await api.put(endpoint, { id, ...formValues });
             } else {
-                await api.post(`${endpoint}`, formValues);
+                // tem que remover o id pois o back está esperando um id em guid, e não um id em number
+                const { id, ...newValues } = formValues;
+                await api.post(endpoint, newValues);
             }
+
             alert(onSuccessMessage || 'Operação realizada com sucesso.');
             navigate(-1);
         } catch (error) {

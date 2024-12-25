@@ -1,4 +1,3 @@
-import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { AuthContextType, AuthProviderProps } from "./props";
@@ -30,10 +29,8 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     useEffect(() => {
         if (token && isTokenValid()) {
-            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
             localStorage.setItem('token', token);
         } else {
-            delete axios.defaults.headers.common["Authorization"];
             localStorage.removeItem('token');
             setToken_(null);
         }
