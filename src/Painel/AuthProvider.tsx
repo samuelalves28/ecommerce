@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { jwtDecode } from "jwt-decode";
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { AuthContextType, AuthProviderProps } from "./props";
