@@ -7,6 +7,7 @@ import LoginView from "./Login/Index";
 import NavbarLayout from "../componentes/Navbar/NavBarLayou";
 import AuthProvider from "./AuthProvider";
 import PrivateRoute from "./PrivateRoute";
+import MonitorRoute from "./Monitoramento/Index"
 
 const PainelView: React.FC = () => {
     return (
@@ -16,6 +17,7 @@ const PainelView: React.FC = () => {
                 <Route element={<PrivateRoute />}>
                     <Route element={<NavbarLayout />}>
                         <Route path="dashboard" element={<DashBoardView />} />
+                        <Route path="Monitor" element={<MonitorRoute />} />
                         <Route path="produto" element={<ProdutoView />} />
                         <Route path="produto/c/:id" element={<ProdutoDetalheView />} />
                         <Route path="*" element={<h1>404 - Not Found</h1>} />
