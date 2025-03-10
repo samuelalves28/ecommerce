@@ -1,15 +1,8 @@
 import React, { } from 'react';
 import { TableContainer, Paper } from '@mui/material';
-import { CadProduto } from './Model';
-import DataListUI from '../../componentes/DataList/DataListUI';
 
 const IndexView: React.FC = () => {
-    const renderRowActions = (product: CadProduto) => (
-        <div>
-            <button onClick={() => alert(`Edit ${product.nome}`)}>Edit</button>
-            <button onClick={() => alert(`Delete ${product.nome}`)}>Delete</button>
-        </div>
-    );
+
 
 
     return (
@@ -21,11 +14,11 @@ const IndexView: React.FC = () => {
                         <LuPackagePlus /> Adicionar produto
                     </Button>
                 </div> */}
-                <DataListUI<CadProduto>
+                {/* <DataListUI<CadProduto>
                     url="/api/produtos"
                     onRowClick={(product) => alert(`View ${product.nome}`)}
                     renderRowActions={renderRowActions}
-                />
+                /> */}
             </Paper>
 
         </TableContainer>
