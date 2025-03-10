@@ -3,6 +3,7 @@ import api from "../../connections/Api";
 import { Button, TextField, Typography, Container, Paper } from "@mui/material";
 import styles from './LoginView.module.css';
 import logo from '../../assets/logo.png';
+import FacebookLogin from "../../componentes/facebook/facebookbutton";
 
 const LoginView: React.FC = () => {
     const [email, setEmail] = useState("");
@@ -66,9 +67,13 @@ const LoginView: React.FC = () => {
                     </Button>
                 </form>
 
+                <FacebookLogin />
+
                 <Button type="submit" variant="outlined" fullWidth className={styles.buttonEsqueciSenha}>
                     Esqueci minha senha ?
                 </Button>
+
+
             </Paper>
         </Container >
     );

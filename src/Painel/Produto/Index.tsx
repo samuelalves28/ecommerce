@@ -1,95 +1,33 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import api from "../../connections/Api";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CircularProgress, IconButton, Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { LuPackagePlus } from "react-icons/lu";
-import { IoPencil, IoTrashOutline } from "react-icons/io5";
+import React, { } from 'react';
+import { TableContainer, Paper } from '@mui/material';
 import { CadProduto } from './Model';
+import DataListUI from '../../componentes/DataList/DataListUI';
 
 const IndexView: React.FC = () => {
-    const [data, setData] = useState<CadProduto[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const navigate = useNavigate();
+    const renderRowActions = (product: CadProduto) => (
+        <div>
+            <button onClick={() => alert(`Edit ${product.nome}`)}>Edit</button>
+            <button onClick={() => alert(`Delete ${product.nome}`)}>Delete</button>
+        </div>
+    );
 
-    const getProdutosApi = useCallback(async () => {
-        setLoading(true);
-        try {
-            const response = await api.get('/api/adm/cad-produto/buscar');
-            setData(response.data);
-        } catch (error) {
-            console.error('Erro ao buscar os dados:', error);
-        } finally {
-            setLoading(false);
-        }
-    }, []);
-
-    useEffect(() => {
-        getProdutosApi();
-    }, [getProdutosApi]);
-
-    const HandlerNavigateDetalheProduto = (id: number | undefined): void => {
-        if (id === 0) {
-            id = undefined;
-        }
-
-        navigate(`c/${id}`);
-    }
-
-    const HandleDeleteProduct = async (id: number): Promise<void> => {
-        setLoading(true);
-        try {
-            await api.delete(`/api/adm/cad-produto/${id}`);
-            alert(`Produto deletado com sucesso`);
-            await getProdutosApi();
-        } catch (error) {
-            console.error('Erro ao deletar o produto:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
 
     return (
         <TableContainer component={Paper} style={{ marginTop: 20 }}>
-            {loading ? (
-                <div style={{ display: 'flex', justifyContent: 'center', padding: 20 }}>
-                    <CircularProgress />
-                </div>
-            ) : (
-                <Paper sx={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ padding: '10px', display: 'flex', justifyContent: 'flex-end' }}>
-                        <Button variant="contained" style={{ gap: '8px', backgroundColor: 'black' }} onClick={() => HandlerNavigateDetalheProduto(0)}>
-                            <LuPackagePlus /> Adicionar produto
-                        </Button>
-                    </div>
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>ID</TableCell>
-                                <TableCell>Nome</TableCell>
-                                <TableCell>Preço</TableCell>
-                                <TableCell style={{ justifyContent: 'end', display: 'flex' }}>Actions</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {data.map((row) => (
-                                <TableRow key={row.id}>
-                                    <TableCell>{row.id}</TableCell>
-                                    <TableCell>{row.nome}</TableCell>
-                                    <TableCell>{row.preco}</TableCell>
-                                    <TableCell style={{ justifyContent: 'end', display: 'flex', fontSize: '10px' }}>
-                                        <IconButton onClick={() => HandlerNavigateDetalheProduto(row.id)}>
-                                            <IoPencil />
-                                        </IconButton>
-                                        <IconButton onClick={() => HandleDeleteProduct(row.id)}>
-                                            <IoTrashOutline style={{ color: 'red' }} />
-                                        </IconButton>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </Paper>
-            )}
+
+            <Paper sx={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
+                {/* <div style={{ padding: '10px', display: 'flex', justifyContent: 'flex-end' }}>
+                    <Button variant="contained" style={{ gap: '8px', backgroundColor: 'black' }} onClick={() => HandlerNavigateDetalheProduto(0)}>
+                        <LuPackagePlus /> Adicionar produto
+                    </Button>
+                </div> */}
+                <DataListUI<CadProduto>
+                    url="/api/produtos"
+                    onRowClick={(product) => alert(`View ${product.nome}`)}
+                    renderRowActions={renderRowActions}
+                />
+            </Paper>
+
         </TableContainer>
     );
 };
