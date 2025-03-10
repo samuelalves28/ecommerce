@@ -1,5 +1,23 @@
 import React, { useEffect } from 'react';
 
+declare global {
+    interface Window {
+        fbAsyncInit: () => void;
+        FB: any;
+    }
+}
+
+interface FacebookLoginResponse {
+    authResponse: {
+        accessToken: string;
+        userID: string;
+        expiresIn: number;
+        signedRequest: string;
+        reauthorize_required_in: number;
+    };
+    status: string;
+}
+
 const FacebookLogin: React.FC = () => {
     useEffect(() => {
         window.fbAsyncInit = function () {
@@ -16,18 +34,20 @@ const FacebookLogin: React.FC = () => {
         (function (d, s, id) {
             let js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) { return; }
-            js = d.createElement(s); js.id = id;
+            js = d.createElement(s) as HTMLScriptElement; js.id = id;
             js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
+            if (fjs && fjs.parentNode) {
+                fjs.parentNode.insertBefore(js, fjs);
+            }
         }(document, 'script', 'facebook-jssdk'));
 
     }, []);
 
     const handleLogin = () => {
-        window.FB.login(response => {
+        window.FB.login((response: FacebookLoginResponse) => {
             if (response.authResponse) {
                 console.log('Welcome! Fetching your information.... ');
-                window.FB.api('/me', { fields: 'name,email,picture' }, function (response) {
+                window.FB.api('/me', { fields: 'name,email,picture' }, function (response: any) {
                     console.log("User", response);
                     console.log('Good to see you, ' + response.name + ' (' + response.email + ').');
                 });
