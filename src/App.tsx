@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import SiteView from './Site/Index'
-import PainelView from './Painel/Index'
+import SiteView from './Site2/Index'
+import PainelView from './Painel2/Index'
 
 function App() {
   return (
