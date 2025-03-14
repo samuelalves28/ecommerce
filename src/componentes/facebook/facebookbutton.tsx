@@ -22,7 +22,8 @@ const FacebookLogin: React.FC = () => {
     useEffect(() => {
         window.fbAsyncInit = function () {
             window.FB.init({
-                appId: '956513749998252',
+                // appId: '956513749998252',
+                appId: '1152538609324928',
                 cookie: true,
                 xfbml: true,
                 version: 'v22.0'
