@@ -1,6 +1,12 @@
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import FormEncontroView from "./formEncontro/Index";
 
-const SiteView = () => {
-    return (<h1>TEste</h1>)
+const SiteView: React.FC = () => {
+    return (<Routes>
+        <Route path="formEncontro" element={<FormEncontroView />} />
+    </Routes>
+    )
 }
 
 export default SiteView;

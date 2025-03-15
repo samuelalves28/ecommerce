@@ -1,0 +1,18 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.form-container {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 50px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}

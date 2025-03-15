@@ -5,7 +5,6 @@ import LoginView from "./Login/Index";
 import PrivateRoute from "./PrivateRoute";
 import NavbarLayout from "../componentes/Navbar/NavBarLayou";
 
-
 const PainelView: React.FC = () => {
     return (
         <AuthProvider>
